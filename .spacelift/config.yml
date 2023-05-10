@@ -3,7 +3,6 @@ version: "1"
 stack_defaults:
 
 stacks:
-    testhook: 
-        before_apply:
-        terraform_version: 1.4.4
-
+  testhook:
+    before_apply:
+    terraform_version: 1.4.0
