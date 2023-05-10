@@ -1,11 +1,13 @@
 version: 1
 
-stack_defaults:
-  after_init:
-  
-  stacks:
+stacks:
     testhook: 
       before_apply:
         terraform_version: 1.4.1
+        
+stack_defaults:
+  after_init:
+  
+  
         
 
