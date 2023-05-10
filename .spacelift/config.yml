@@ -1,6 +1,7 @@
 version: 1
 stack_defaults:
   after_init:
+  - echo "tflint:"
   
  stacks:
    testhook:
