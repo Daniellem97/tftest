@@ -1,5 +1,6 @@
-version: "1"
-stacks:
+version: 1
+stack_defaults:
   after_init:
-  testhook:
-    terraform_version: 1.4.2
+    - echo "tflint:" && tflint
+    - echo "tfsec:" && tfsec --concise-output
+  terraform_version: 1.4.0
