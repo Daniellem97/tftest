@@ -5,6 +5,7 @@ stack_defaults:
   
   stacks:
     testhook: 
+      before_apply:
         terraform_version: 1.4.1
         
 
