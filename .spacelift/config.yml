@@ -1,9 +1,10 @@
-version: "1"
+version: 1
 
 stack_defaults:
-    before_init:
-        - terraform fmt -check
-
-stacks:
+  after_init:
+  
+  stacks:
     testhook: 
-        terraform_version: 1.4.2
+        terraform_version: 1.4.1
+        
+
