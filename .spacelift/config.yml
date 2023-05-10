@@ -1,4 +1,4 @@
 version: "1"
 stacks:
-  test-hook:
-    terraform_version: 1.3.4
+  testhook:
+    terraform_version: 1.3.5
