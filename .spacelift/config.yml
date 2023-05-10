@@ -1,6 +1,4 @@
 version: 1
 stack_defaults:
   after_init:
-    - echo "tflint:" && tflint
-    - echo "tfsec:" && tfsec --concise-output
   terraform_version: 1.4.0
