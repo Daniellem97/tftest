@@ -68,7 +68,7 @@ resource "aws_security_group" "mtc_sg" {
 }
 
 resource "aws_key_pair" "mtc_auth" {
-  key_name   = "mtckey3"
+  key_name   = "mtckey2"
   public_key = file("mtckey.pub")
 }
 
