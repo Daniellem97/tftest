@@ -2,9 +2,8 @@ stack_defaults:
     runner_image: 
     before_init:
 
-
 stacks:
-    test1: 
-    terraform_version: 1.4.4
+   test11: 
+        terraform_version: 0.12.4
         environment:
             AWS_REGION: eu-west-1
