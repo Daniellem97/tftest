@@ -50,13 +50,7 @@ resource "aws_route_table" "mtc_public_rt3" {
     Name = "dev_public_rt"
   }
 }
-resource "aws_route_table" "mtc_public_rt4" {
-  vpc_id = aws_vpc.mtc_vpc.id
 
-  tags = {
-    Name = "dev_public_rt"
-  }
-}
 
 
 resource "aws_route" "default_route" {
