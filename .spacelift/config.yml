@@ -7,4 +7,4 @@ stacks:
         before_apply:
         terraform_version: 1.4.6
         environment:
-            AWS_REGION: eu-west-1
+            AWS_REGION: eu-west-2
