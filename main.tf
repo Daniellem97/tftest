@@ -43,13 +43,6 @@ resource "aws_route_table" "mtc_public_rt2" {
   }
 }
 
-resource "aws_route_table" "mtc_public_rt3" {
-  vpc_id = aws_vpc.mtc_vpc.id
-
-  tags = {
-    Name = "dev_public_rt"
-  }
-}
 
 
 
