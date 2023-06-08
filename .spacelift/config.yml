@@ -1,5 +1,9 @@
-version: "1"
-
 stack_defaults:
+    runner_image: 
     before_init:
-    terraform_version: 1.3.5
+
+
+stacks:
+    test1: 
+        environment:
+            AWS_REGION: eu-west-1
