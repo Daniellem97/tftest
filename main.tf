@@ -70,7 +70,15 @@ resource "aws_key_pair" "mtc_auth" {
   public_key = file("mtckey.pub")
 }
 
+resource "aws_key_pair" "mtc_auth4" {
+  key_name   = "mtckey4"
+  public_key = file("mtckey.pub")
+}
 
+resource "aws_key_pair" "mtc_auth3" {
+  key_name   = "mtckey3"
+  public_key = file("mtckey.pub")
+}
 
 resource "aws_instance" "dev_node" {
     instance_type = "t2.micro"
