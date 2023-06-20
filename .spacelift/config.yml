@@ -1,3 +1,16 @@
 version: "1"
-stack_defaults: &defaults
-  terraform_version: 1.2.9
+
+stack_defaults:
+  terraform_version: 1.4.5
+
+
+stacks:
+  test1:
+    before_init:
+    after_init: []
+    before_plan: []
+    after_plan: []
+    before_perform: []
+    after_perform: []
+    before_apply: []
+    after_apply: []
