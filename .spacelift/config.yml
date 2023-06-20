@@ -6,6 +6,7 @@ stack_defaults:
 
 stacks:
   test1:
+    terraform_version: 1.4.5
     before_init:
     after_init: []
     before_plan: []
