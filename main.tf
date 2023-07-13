@@ -8,7 +8,7 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-resource "aws_subnet" "mtc_public_subnet {
+resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = "10.123.1.0/24"
   map_public_ip_on_launch = true
@@ -69,7 +69,12 @@ resource "aws_key_pair" "mtc_auth" {
   key_name   = "mtckey2"
   public_key = file("mtckey.pub")
 }
- 
+
+ resource "aws_key_pair" "mtc_auth" {
+  key_name   = "mtckey2"
+  public_key = file("mtckey.pub")
+}
+
 resource "aws_key_pair" "mtc_auth2" {
   key_name   = "mtckey3"
   public_key = file("mtckey.pub")
