@@ -7,15 +7,6 @@ resource "aws_vpc" "mtc_vpc" {
     Name = "dev"
   }
 }
-resource "aws_vpc" "mtc_vpc2" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
-  tags = {
-    Name = "dev"
-  }
-}
 
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
