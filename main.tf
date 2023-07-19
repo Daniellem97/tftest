@@ -8,7 +8,6 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-test
 test2
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
