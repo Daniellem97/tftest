@@ -7,11 +7,7 @@ terraform {
 }
 
 provider "aws" {
-  region                  = var.region
+  region                  = 'us-west-1'
   shared_credentials_file = "~/.aws/credentials"
   profile                 = "default"
-}
-
-variable "region" {
-  description = "The region where to deploy the resources"
 }
