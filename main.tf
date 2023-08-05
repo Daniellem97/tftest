@@ -1,11 +1,4 @@
-resource "aws_s3_bucket" "example" {
-  bucket = "my12345678buckettestest"
 
-  tags = {
-    Name        = "My12345678buckettestest"
-    Environment = "Dev"
-  }
-}
 
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
