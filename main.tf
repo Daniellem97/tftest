@@ -9,6 +9,15 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_iam_user" "lb" {
+  name = "loadbalancer"
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
 
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
