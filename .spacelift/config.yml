@@ -4,14 +4,4 @@ stack_defaults:
   terraform_version: 1.4.5
 
 
-stacks:
-  debugtest:
-    terraform_version: 1.5.1
-    before_init:
-    after_init: []
-    before_plan: []
-    after_plan: []
-    before_perform: []
-    after_perform: []
-    before_apply: []
-    after_apply: []
+
