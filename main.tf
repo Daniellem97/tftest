@@ -1,11 +1,4 @@
-resource "aws_iam_user" "lb" {
-  name = "loadbalancer"
-  path = "/system/"
 
-  tags = {
-    tag-key = "tag-value"
-  }
-}
 
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
