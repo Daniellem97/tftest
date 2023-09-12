@@ -1,4 +1,3 @@
 version: "1"
 
 stack_defaults:
-  terraform_version: 1.4.8
