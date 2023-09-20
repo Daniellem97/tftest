@@ -7,87 +7,6 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-
-
-resource "aws_vpc" "mtc_vpc1" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc10" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "test"
-  }
-}
-resource "aws_vpc" "mtc_vpc11" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "test2"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc2" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc3" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc4" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc5" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc6" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc7" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev"
-  }
-}
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = "10.123.1.0/24"
@@ -96,7 +15,6 @@ resource "aws_subnet" "mtc_public_subnet" {
     Name = "dev-public"
   }
 }
-
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
