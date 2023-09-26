@@ -6,6 +6,30 @@ resource "aws_vpc" "mtc_vpc" {
     Name = "dev"
   }
 }
+resource "aws_vpc" "mtc_vpc234" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dedesv"
+  }
+}
+resource "aws_vpc" "mtc_vpc33" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev"
+  }
+}
+resource "aws_vpc" "mtc_vpc23" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "deev"
+  }
+}
 
 resource "aws_vpc" "mtc_vpc8" {
   cidr_block           = "10.123.0.0/16"
