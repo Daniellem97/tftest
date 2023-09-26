@@ -14,6 +14,7 @@ resource "aws_vpc" "mtc_vpc234" {
     Name = "dedesv"
   }
 }
+
 resource "aws_vpc" "mtc_vpc33" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
