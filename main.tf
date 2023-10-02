@@ -3,9 +3,10 @@ resource "aws_vpc" "mtc_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name = "dev"
+    Name = "dev2"
   }
 }
+
 
 
 resource "aws_subnet" "mtc_public_subnet" {
