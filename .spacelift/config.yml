@@ -1,7 +1,9 @@
 version: "1"
 
-stack_defaults:
-
+stacks:
+    debugtest2: &shared
+        terraform_version: 0.12.4
+   
 
 
 
