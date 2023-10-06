@@ -2,7 +2,7 @@ version: "1"
 
 stacks:
     debugtest2: &shared
-        terragrunt_version: 0.50.0
+        terragrunt_version: 0.48.6
    
 
 
