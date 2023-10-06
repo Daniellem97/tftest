@@ -2,7 +2,7 @@ version: "1"
 
 stacks:
     debugtest2: &shared
-        terraform_version: 0.12.4
+        terragrunt_version: 0.50.0
    
 
 
