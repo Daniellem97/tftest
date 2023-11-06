@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket = "sltftestbucket"
+    key    = "terraform.tfstate"
+    region = "us-west-2" 
+  }
+}
+
+
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
