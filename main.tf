@@ -74,7 +74,7 @@ resource "aws_instance" "dev_node" {
     user_data = file("userdata.tpl")
     tags = {
     Name = "ExampleInstance"
-    test = "test"                        
+    Environment = "Dev"                        
   }
     
     root_block_device {
