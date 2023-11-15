@@ -84,6 +84,17 @@ resource "aws_lb" "example" {
     Name = "example-lb"
   }
 }
+resource "aws_lb" "example2" {
+  name               = "example-lb2"
+  internal           = false
+  load_balancer_type = "application"
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name = "example-lb2"
+  }
+}
 
 resource "aws_wafv2_web_acl" "example_acl" {
   name        = "example-acl"
