@@ -77,8 +77,8 @@ resource "aws_lb" "example" {
   name               = "example-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
-  subnets            = [aws_subnet.example.id]
+  security_groups    = [aws_security_group.mtc_sg.id]
+  subnets            = [aws_subnet.mtc_public_subnet.id]
 
   enable_deletion_protection = false
 
