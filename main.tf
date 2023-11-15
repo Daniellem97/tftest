@@ -98,7 +98,7 @@ resource "aws_lb" "example" {
   name               = "example-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
+  security_groups    = [aws_security_group.mtc_sg.id]
   subnets            = [aws_subnet.example_1.id, aws_subnet.example_2.id]  # Attach to both subnets
 
   enable_deletion_protection = false
