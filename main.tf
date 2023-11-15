@@ -72,7 +72,7 @@ resource "aws_instance" "dev_node" {
     Name = "ExampleInstance"
     Environment = "Dev"                        
   }
-
+}
 resource "aws_lb" "example" {
   name               = "example-lb"
   internal           = false
@@ -94,4 +94,4 @@ resource "aws_lb" "example" {
   #  identityfile = "~/.ssh/mtckey" })
   #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   #}
-}
+
