@@ -17,6 +17,27 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
+resource "aws_subnet" "example_1" {
+  vpc_id     = aws_vpc.example.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-west-2a"  # First Availability Zone
+
+  tags = {
+    Name = "example-subnet-1"
+  }
+}
+
+resource "aws_subnet" "example_2" {
+  vpc_id     = aws_vpc.example.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-west-2b"  # Second Availability Zone
+
+  tags = {
+    Name = "example-subnet-2"
+  }
+}
+
+
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
@@ -77,8 +98,8 @@ resource "aws_lb" "example" {
   name               = "example-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.mtc_sg.id]
-  subnets            = [aws_subnet.mtc_public_subnet.id]
+  security_groups    = [aws_security_group.lb_sg.id]
+  subnets            = [aws_subnet.example_1.id, aws_subnet.example_2.id]  # Attach to both subnets
 
   enable_deletion_protection = false
 
