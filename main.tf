@@ -75,73 +75,17 @@ resource "aws_instance" "dev_node" {
     Environment = "Dev"                        
   }
     
-    root_block_device {
-        volume_size = 10
-    }
+resource "aws_lb" "example" {
+  name               = "example-lb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.lb_sg.id]
+  subnets            = [aws_subnet.example.id]
 
-resource "aws_security_group" "lb_sg" {
-  name        = "lb-sg"
-  description = "Security Group for Load Balancer"
-  vpc_id      = aws_vpc.example.id
-}
+  enable_deletion_protection = false
 
-resource "aws_subnet" "example" {
-  vpc_id     = aws_vpc.example.id
-  cidr_block = "10.0.1.0/24"
-  availability_zone = "us-west-2a"
-}
-
-resource "aws_vpc" "example" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_wafv2_web_acl_association" "example" {
-  resource_arn = aws_lb.example.arn
-  web_acl_arn  = aws_wafv2_web_acl.example.arn
-}
-
-resource "aws_wafv2_web_acl" "example" {
-  name        = "example-acl"
-  scope       = "REGIONAL"
-  description = "Example ACL"
-  default_action {
-    allow {}
-  }
-
-  rule {
-    name     = "rule1"
-    priority = 1
-
-    action {
-      block {}
-    }
-
-    statement {
-      size_constraint_statement {
-        comparison_operator = "GT"
-        size                = 100
-        field_to_match {
-          body {}
-        }
-
-        text_transformation {
-          priority = 0
-          type     = "NONE"
-        }
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = false
-      metric_name                = "rule1"
-      sampled_requests_enabled   = false
-    }
-  }
-
-  visibility_config {
-    cloudwatch_metrics_enabled = false
-    metric_name                = "example-acl"
-    sampled_requests_enabled   = false
+  tags = {
+    Name = "example-lb"
   }
 }
 
