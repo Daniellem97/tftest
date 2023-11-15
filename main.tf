@@ -94,10 +94,7 @@ resource "aws_subnet" "example" {
 resource "aws_vpc" "example" {
   cidr_block = "10.0.0.0/16"
 }
-3. AWS WAFv2 Web ACL Association:
 
-hcl
-Copy code
 resource "aws_wafv2_web_acl_association" "example" {
   resource_arn = aws_lb.example.arn
   web_acl_arn  = aws_wafv2_web_acl.example.arn
