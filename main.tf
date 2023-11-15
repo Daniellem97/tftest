@@ -18,7 +18,7 @@ resource "aws_subnet" "mtc_public_subnet" {
 }
 
 resource "aws_subnet" "example_1" {
-  vpc_id     = aws_vpc.example.id
+  vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-west-2a"  # First Availability Zone
 
@@ -28,7 +28,7 @@ resource "aws_subnet" "example_1" {
 }
 
 resource "aws_subnet" "example_2" {
-  vpc_id     = aws_vpc.example.id
+  vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-west-2b"  # Second Availability Zone
 
