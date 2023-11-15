@@ -17,8 +17,6 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
-
-
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
@@ -75,19 +73,6 @@ resource "aws_instance" "dev_node" {
     Environment = "Dev"                        
   }
     
-resource "aws_lb" "example" {
-  name               = "example-lb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
-  subnets            = [aws_subnet.example.id]
-
-  enable_deletion_protection = false
-
-  tags = {
-    Name = "example-lb"
-  }
-}
 
   #provisioner "local-exec" {
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
