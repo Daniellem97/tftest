@@ -17,27 +17,6 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
-resource "aws_subnet" "example_1" {
-  vpc_id                  = aws_vpc.mtc_vpc.id
-  cidr_block = "10.123.1.0/24"
-  availability_zone = "us-west-2a"  # First Availability Zone
-
-  tags = {
-    Name = "example-subnet-1"
-  }
-}
-
-resource "aws_subnet" "example_2" {
-  vpc_id                  = aws_vpc.mtc_vpc.id
-  cidr_block = "10.123.1.0/24"
-  availability_zone = "us-west-2b"  # Second Availability Zone
-
-  tags = {
-    Name = "example-subnet-2"
-  }
-}
-
-
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
