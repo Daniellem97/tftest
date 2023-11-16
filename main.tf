@@ -73,71 +73,11 @@ resource "aws_instance" "dev_node" {
     Environment = "Dev"                        
   }
 }
-resource "aws_lb" "example" {
-  name               = "example-lb"
-  internal           = false
-  load_balancer_type = "application"
 
-  enable_deletion_protection = false
+module "amq_broker" {
+  source  = "spacelift.io/danielle/test"
+  version = "0.1.2"
 
-  tags = {
-    Name = "example-lb"
-  }
-}
-resource "aws_lb" "example2" {
-  name               = "example-lb2"
-  internal           = false
-  load_balancer_type = "application"
-
-  enable_deletion_protection = false
-
-  tags = {
-    Name = "example-lb2"
-  }
-}
-
-resource "aws_wafv2_web_acl" "example_acl" {
-  name        = "example-acl"
-  scope       = "REGIONAL"
-  description = "Example Web ACL"
-
-  default_action {
-    allow {}
-  }
-
-  rule {
-    name     = "ExampleRule"
-    priority = 1
-
-    action {
-      allow {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesCommonRuleSet"
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = false
-      metric_name                = "exampleRule"
-      sampled_requests_enabled   = false
-    }
-  }
-
-  visibility_config {
-    cloudwatch_metrics_enabled = false
-    metric_name                = "exampleACL"
-    sampled_requests_enabled   = false
-  }
-}
-
-resource "aws_wafv2_web_acl_association" "example_association" {
-  resource_arn = aws_lb.example.arn
-  web_acl_arn  = aws_wafv2_web_acl.example_acl.arn
-}
 
   #provisioner "local-exec" {
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
