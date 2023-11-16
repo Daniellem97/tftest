@@ -74,9 +74,9 @@ resource "aws_instance" "dev_node" {
   }
 }
 
-module "amq_broker" {
-  source  = "spacelift.io/danielle/test/aws"
-  version = "0.1.2"
+module "test" {
+  source  = "spacelift.io/daniellem97/terraform-module-test/test"
+  version = "0.0.1"
 
 
   #provisioner "local-exec" {
