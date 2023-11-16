@@ -75,7 +75,7 @@ resource "aws_instance" "dev_node" {
 }
 
 module "amq_broker" {
-  source  = "spacelift.io/danielle/test"
+  source  = "spacelift.io/danielle/test/aws"
   version = "0.1.2"
 
 
