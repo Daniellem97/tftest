@@ -1,10 +1,12 @@
-version: "2"
+version: "1"
+
+stack_defaults:
+
 
 stacks:
-    debugtest: 
-    terraform_version       = "1.5.2"
-    terraform_workflow_tool = "CUSTOM"
+    # The key of is the immutable slug of your stack
+    # which you will find in the URL.
+   debugtest: &shared
 
-
-
-
+        terraform_version: 0.12.4
+  
