@@ -9,4 +9,5 @@ stacks:
    debugtest: &shared
 
         terraform_version: 1.1.4
+        terraform_workflow_tool = "CUSTOM"
   
