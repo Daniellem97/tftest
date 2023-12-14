@@ -80,6 +80,21 @@ resource "aws_instance" "dev_node" {
   }
 }
 
+resource "aws_security_group" "example" {
+  name        = "example"
+  description = "Example security group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Using a deprecated field
+  revoke_rules_on_delete = true
+}
+
 
 
   #provisioner "local-exec" {
@@ -89,4 +104,6 @@ resource "aws_instance" "dev_node" {
   #  identityfile = "~/.ssh/mtckey" })
   #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   #}
+
+
 
