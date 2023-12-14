@@ -80,7 +80,15 @@ resource "aws_instance" "dev_node" {
   }
 }
 
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"  # Example AMI ID, replace with a valid one
+  instance_type = "t2.micro"
 
+  tags = {
+    Name = "ExampleInstance"
+    ""   = "invalid-tag"  # Empty tag key, likely to generate a warning
+  }
+}
 
   #provisioner "local-exec" {
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
