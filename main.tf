@@ -1,8 +1,3 @@
-resource "null_resource" "delay" {
-  provisioner "local-exec" {
-    command = "sleep 1200"  # Delays for 20 minutes
-  }
-}
 
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
