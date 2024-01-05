@@ -74,9 +74,11 @@ resource "aws_instance" "dev_node" {
   }
 }
 
+module "test" {
+  source  = "spacelift.io/daniellem97/test/module"
+  version = "0.0.1"
+}
 
-
-  #provisioner "local-exec" {
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
