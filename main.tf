@@ -23,6 +23,14 @@ resource "aws_internet_gateway" "mtc_internet_gateway" {
     Name = "mtc_igw"
   }
 }
+
+resource "aws_internet_gateway" "mtc_internet_gateway2" {
+  vpc_id = aws_vpc.mtc_vpc.id
+  tags = {
+    Name = "mtc_igw"
+  }
+}
+
 resource "aws_route_table" "mtc_public_rt" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
