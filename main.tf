@@ -86,6 +86,10 @@ resource "aws_db_instance" "example" {
   password             = "password"
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
