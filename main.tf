@@ -16,6 +16,20 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
+resource "aws_alb" "example" {
+  name               = "my-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = ["sg-123456"]
+  subnets            = ["subnet-abcde012", "subnet-bcde012a"]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name = "my-alb"
+  }
+}
+
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
