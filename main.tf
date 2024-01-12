@@ -16,20 +16,19 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
-resource "aws_alb" "example" {
-  name               = "my-alb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = ["sg-123456"]
-  subnets            = ["subnet-abcde012", "subnet-bcde012a"]
+resource "aws_security_group" "example" {
+  name        = "example"
+  description = "An example security group"
 
-  enable_deletion_protection = false
-
-  tags = {
-    Name = "my-alb"
+  # Using 'egress' or 'ingress' rules within the aws_security_group resource 
+  # might be deprecated in favor of aws_security_group_rule resource
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
