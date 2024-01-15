@@ -16,20 +16,6 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
-resource "aws_security_group" "example" {
-  name        = "example"
-  description = "An example security group"
-
-  # Using 'egress' or 'ingress' rules within the aws_security_group resource 
-  # might be deprecated in favor of aws_security_group_rule resource
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
