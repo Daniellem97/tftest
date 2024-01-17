@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/wrong-aws"
+      source  = "hashicorp/aws"
       version = "~> 3.71.0"  # Changed version constraint format
     }
   }
