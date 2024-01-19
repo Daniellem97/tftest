@@ -7,6 +7,5 @@ stacks:
     # The key of is the immutable slug of your stack
     # which you will find in the URL.
    debugtest: &shared
-
-      
-  
+ before_init:
+        - terraform import aws_instance.my_instance i-1234567890abcdef0
