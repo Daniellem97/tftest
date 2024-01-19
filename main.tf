@@ -7,7 +7,7 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-resource "aws_subnet" "mtc_public_subnet" {
+resource "aws_" "mtc_public_" {
   vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = "10.123.1.0/24"
   map_public_ip_on_launch = true
@@ -35,7 +35,7 @@ resource "aws_route" "default_route" {
   gateway_id             = aws_internet_gateway.mtc_internet_gateway.id
 }
 resource "aws_route_table_association" "mtc_public_assoc" {
-  subnet_id      = aws_subnet.mtc_public_subnet.id
+  _id      = aws_.mtc_public_.id
   route_table_id = aws_route_table.mtc_public_rt.id
 }
 resource "aws_security_group" "mtc_sg" {
@@ -66,7 +66,7 @@ resource "aws_instance" "dev_node" {
     ami = data.aws_ami.server_ami.id
     key_name = aws_key_pair.mtc_auth.id 
     vpc_security_group_ids = [aws_security_group.mtc_sg.id]
-    subnet_id = aws_subnet.mtc_public_subnet.id
+    _id = aws_.mtc_public_.id
     user_data = file("userdata.tpl")
     tags = {
     Name = "ExampleInstance"
