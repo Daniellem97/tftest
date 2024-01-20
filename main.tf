@@ -103,3 +103,80 @@ resource "aws_instance" "dev_node" {
   #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   #}
 
+provider "aws" {
+  region = "us-west-2" # Change to your AWS region
+}
+
+resource "aws_kms_key" "mykey" {
+  description             = "KMS key for S3"
+  enable_key_rotation     = true
+  deletion_window_in_days = 10
+  is_enabled              = true
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "key-default-1",
+  "Statement": [
+    {
+      "Sid": "Enable IAM User Permissions",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+      },
+      "Action": "kms:*",
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_kms_alias" "s3_alias" {
+  name          = "alias/test-name/s3"
+  target_key_id = aws_kms_key.mykey.key_id
+}
+
+resource "aws_s3_bucket" "mybucket" {
+  bucket = "my-example-bucket" # Change to your bucket name
+  acl    = "private"
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.mykey.arn
+        sse_algorithm     = "aws:kms"
+      }
+
+      bucket_key_enabled = true
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "mybucket_policy" {
+  bucket = aws_s3_bucket.mybucket.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "${aws_s3_bucket.mybucket.arn}",
+        "${aws_s3_bucket.mybucket.arn}/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}
+POLICY
+}
+
+
