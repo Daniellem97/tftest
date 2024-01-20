@@ -16,16 +16,7 @@ resource "aws_subnet" "mtc_public_subnet" {
   }
 }
 
-resource "aws_vpc" "mtc_vpc1" {
-  cidr_block           = "10.123.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-  tags = {
-    Name = "dev2"
-  }
-}
-
-resource "aws_vpc" "mtc_vpc2" {
+resource "aws_vpc" "mtc_vpc7" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -35,6 +26,14 @@ resource "aws_vpc" "mtc_vpc2" {
 }
 
 
+resource "aws_vpc" "mtc_vpc3" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev2"
+  }
+}
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
