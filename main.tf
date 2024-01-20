@@ -102,4 +102,44 @@ resource "aws_instance" "dev_node" {
   #  identityfile = "~/.ssh/mtckey" })
   #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   #}
+resource "aws_s3_bucket" "mybucket" {
+  bucket = "my-example-bucket" # Change to your bucket name
+  acl    = "private"
 
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.mykey.arn
+        sse_algorithm     = "aws:kms"
+      }
+
+      bucket_key_enabled = true
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "mybucket_policy" {
+  bucket = aws_s3_bucket.mybucket.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "${aws_s3_bucket.mybucket.arn}",
+        "${aws_s3_bucket.mybucket.arn}/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}
+POLICY
+}
