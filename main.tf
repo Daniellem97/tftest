@@ -9,6 +9,24 @@ resource "aws_vpc" "mtc_vpc" {
 
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
+  cidr_block              = "10.123.1.0/22"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "dev-public"
+  }
+}
+
+resource "aws_subnet" "mtc_public_subnet2" {
+  vpc_id                  = aws_vpc.mtc_vpc.id
+  cidr_block              = "10.123.1.0/24"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "dev-public"
+  }
+}
+
+resource "aws_subnet" "mtc_public_subnet3" {
+  vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = "10.123.1.0/24"
   map_public_ip_on_launch = true
   tags = {
@@ -61,19 +79,6 @@ resource "aws_security_group" "mtc_sg" {
  resource "aws_key_pair" "mtc_auth" {
   key_name   = "mtckey2"
   public_key = file("mtckey.pub")
-}
-
-resource "aws_instance" "dev_node" {
-    instance_type = "t2.micro"
-    ami = data.aws_ami.server_ami.id
-    key_name = aws_key_pair.mtc_auth.id 
-    vpc_security_group_ids = [aws_security_group.mtc_sg.id]
-    subnet_id = aws_subnet.mtc_public_subnet.id
-    user_data = file("userdata.tpl")
-    tags = {
-    Name = "ExampleInstance"
-    Environment = "Dev"                        
-  }
 }
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
