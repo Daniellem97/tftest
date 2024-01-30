@@ -34,6 +34,15 @@ resource "aws_vpc" "mtc_vpc2" {
   }
 }
 
+data "aws_ami" "example" {
+  most_recent = true
+  owners      = ["self"]
+
+  filter {
+    name   = "name"
+    values = ["your_ami_name"]
+  }
+}
 
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
