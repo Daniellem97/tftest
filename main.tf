@@ -41,7 +41,7 @@ resource "aws_route_table_association" "mtc_public_assoc" {
   route_table_id = aws_route_table.mtc_public_rt.id
 }
 
-resource "aws_security_group" "mtc_sg" {
+resource "aws_security_group" "mtc_sg3" {
   name        = "public_sg"
   description = "public security group"
   vpc_id      = aws_vpc.mtc_vpc.id
@@ -59,6 +59,14 @@ resource "aws_security_group" "mtc_sg" {
   }
 }
 
+ resource "aws_key_pair" "mtc_auth" {
+  key_name   = "mtckey2"
+  public_key = file("mtckey.pub")
+}
+ resource "aws_key_pair" "mtc_auth" {
+  key_name   = "mtckey2"
+  public_key = file("mtckey.pub")
+}
  resource "aws_key_pair" "mtc_auth" {
   key_name   = "mtckey2"
   public_key = file("mtckey.pub")
