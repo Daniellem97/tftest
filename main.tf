@@ -5,7 +5,7 @@ resource "aws_vpc" "mtc_vpc" {
   tags = {
     Name = "dev23"
   }
-}
+
 
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
