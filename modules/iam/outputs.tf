@@ -1,5 +1,5 @@
 output "iam_role_arn" {
-  value       = aws_iam_role.testing_importiam.arn
+  value       = aws_iam_role.testingimportiam.arn
   description = "The ARN of the IAM role"
 }
 output "iam_policy_name" {
