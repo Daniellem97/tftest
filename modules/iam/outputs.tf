@@ -4,6 +4,6 @@ output "iam_role_arn" {
 }
 
 output "iam_policy_name" {
-  value       = aws_iam_role_policy.example_policy.name
+  value       = aws_iam_policy_attachment.admin_access.name
   description = "The name of the IAM policy attached to the role"
 }
