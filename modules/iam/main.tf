@@ -1,4 +1,4 @@
-resource "aws_iam_role" "testing_importiam" {
+resource "aws_iam_role" "testingimportiam" {
   name = "testingimportiam"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
