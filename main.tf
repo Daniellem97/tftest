@@ -82,6 +82,11 @@ resource "aws_s3_bucket" "testing_imports" {
   bucket = "testingimportsl" # This name must exactly match your bucket's name in AWS.
 }
 
+module "iam_example" {
+  source  = "./modules/iam"
+  # Since we hardcoded the values in the module, you don't necessarily need to pass variables here unless you've adjusted the module to require them.
+}
+
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
