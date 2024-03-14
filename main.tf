@@ -76,6 +76,13 @@ resource "aws_instance" "dev_node" {
     Environment = "Dev"                        
   }
 }
+
+resource "aws_s3_bucket" "testing_imports" {
+  # You can initially leave the configuration block empty or configure it to match your bucket's settings.
+  bucket = "testingimportsl" # This name must exactly match your bucket's name in AWS.
+}
+
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
