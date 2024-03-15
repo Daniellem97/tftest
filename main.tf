@@ -83,10 +83,14 @@ resource "aws_s3_bucket" "testing_imports" {
 }
 
 module "iam_example" {
-  source  = "./modules/iam"
-  # Since we hardcoded the values in the module, you don't necessarily need to pass variables here unless you've adjusted the module to require them.
-}
+  for_each = var.iam_entities
 
+  source  = "./modules/iam"
+
+  # Assuming your module accepts variables like `name` or `policy`, you can pass them like so:
+  name   = each.value.name
+  policy = each.value.policy
+}
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
