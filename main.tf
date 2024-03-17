@@ -92,6 +92,16 @@ module "iam_example" {
   policy = each.value.policy
 }
 
+resource "aws_s3_bucket" "oihfosdhfousf" {
+  bucket = "my-public-bucket-name" # Ensure this name is unique across all existing bucket names in AWS
+  acl    = "public-read"
+
+  tags = {
+    Name        = "oihfosdhfousf"
+    Environment = "Public"
+  }
+}
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
