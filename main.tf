@@ -82,15 +82,6 @@ resource "aws_s3_bucket" "testing_imports" {
   bucket = "testingimportsl" # This name must exactly match your bucket's name in AWS.
 }
 
-module "iam_example" {
-  for_each = var.iam_entities
-
-  source  = "./modules/iam"
-
-  # Assuming your module accepts variables like `name` or `policy`, you can pass them like so:
-  name   = each.value.name
-  policy = each.value.policy
-}
 
 resource "aws_s3_bucket" "oihfosdhfousf" {
   bucket = "my-public-bucket-name" # Ensure this name is unique across all existing bucket names in AWS
