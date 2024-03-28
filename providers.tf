@@ -9,5 +9,5 @@ terraform {
 provider "aws" {
 }
 
-provider "azurerm" {
+required_version = "~> 0.12.29"
 }
