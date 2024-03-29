@@ -76,21 +76,6 @@ resource "aws_instance" "dev_node" {
   }
 }
 
-resource "aws_s3_bucket" "testing_imports" {
-  # You can initially leave the configuration block empty or configure it to match your bucket's settings.
-  bucket = "testingimportsl" # This name must exactly match your bucket's name in AWS.
-}
-
-
-resource "aws_s3_bucket" "oihfosdhfousf" {
-  bucket = "my-public-bucket-name" # Ensure this name is unique across all existing bucket names in AWS
-  acl    = "public-read"
-
-  tags = {
-    Name        = "oihfosdhfousf"
-    Environment = "Public"
-  }
-}
 
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
