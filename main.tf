@@ -136,7 +136,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 }
 
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
+resource "aws_dynamodb_table" "basic2-dynamodb-table" {
   name           = "GameScores3"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
@@ -180,7 +180,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 }
 
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
+resource "aws_dynamodb_table" "basic3-dynamodb-table" {
   name           = "GameScore2s"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
