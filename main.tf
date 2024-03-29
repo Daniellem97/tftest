@@ -187,6 +187,7 @@ resource "aws_dynamodb_table" "basic3-dynamodb-table" {
   write_capacity = 20
   hash_key       = "UserId"
   range_key      = "GameTitle"
+  deletion_protection_enabled = true
 
   attribute {
     name = "UserId"
