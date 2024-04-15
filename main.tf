@@ -64,6 +64,17 @@ resource "aws_security_group" "mtc_sg" {
 }
 
 
+import {
+  to = aws_instance.example
+  id = "i-0c9266d7246acb45c"
+}
+
+resource "aws_instance" "example" {
+  name = "testimport"
+}
+
+
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
