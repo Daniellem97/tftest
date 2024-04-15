@@ -64,6 +64,16 @@ resource "aws_security_group" "mtc_sg" {
 }
 
 
+import {
+  to = aws_s3_bucket.example
+  id = "tfstatebucketsl"
+}
+
+resource "aws_s3_bucket" "tfstatebucketsl" {
+   bucket = "tfstatebucketsl"
+   acl = "private"  
+}
+
 
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
