@@ -63,6 +63,18 @@ resource "aws_security_group" "mtc_sg" {
   public_key = file("mtckey.pub")
 }
 
+import {
+  to = aws_instance.example
+  bucket = "tfstatebucketsl"
+}
+
+resource "aws_s3_bucket" "tfstatebucketsl" {
+   bucket = "tfstatebucketsl"
+   acl = "private"  
+}
+
+
+
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
