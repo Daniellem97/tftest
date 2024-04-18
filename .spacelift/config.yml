@@ -16,5 +16,4 @@ stacks:
     # which you will find in the URL.
     debugtest: &shared
         terraform_version: 1.5.7
-        environment:
-            Slack_channel_id: 01234549753
+        runner_image: thiswillfail
