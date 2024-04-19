@@ -7,7 +7,6 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
   cidr_block              = "10.123.1.0/24"
@@ -16,6 +15,7 @@ resource "aws_subnet" "mtc_public_subnet" {
     Name = "dev-public"
   }
 }
+
 
 resource "aws_internet_gateway" "mtc_internet_gateway" {
   vpc_id = aws_vpc.mtc_vpc.id
