@@ -67,6 +67,7 @@ resource "aws_security_group" "mtc_sg" {
 
 
 
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
