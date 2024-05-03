@@ -64,6 +64,25 @@ resource "aws_security_group" "mtc_sg" {
   public_key = file("mtckey.pub")
 }
 
+resource "aws_iam_policy" "service_policy" {
+  name        = "ExampleServicePolicy"
+  description = "IAM policy for Example Service access"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = [
+          "service-prefix:ActionName"  # Replace service-prefix and ActionName with the actual service and action name
+        ],
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
