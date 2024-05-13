@@ -3,4 +3,6 @@ variable "host_os" {
 	default = "windows"
 }
 
-
+variable "AWS_REGION" {
+	type = string
+}
