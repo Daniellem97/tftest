@@ -3,4 +3,4 @@ version: "1"
 stacks:
     debugtest:
         project_root: 
-        runner_image: fail
+        runner_image: fail2
