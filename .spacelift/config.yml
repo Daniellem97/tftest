@@ -1,6 +1,6 @@
 version: "1"
   
 stacks:
-    debugtest:
+    tftest-*:
         project_root: 
         runner_image: fail2
