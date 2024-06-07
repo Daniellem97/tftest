@@ -7,6 +7,23 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_s3_bucket" "example" {
+  bucket = "my-example-bucket"
+  acl    = "private"
+}
+
+import "aws_s3_bucket" "example" {
+  id = "my-example-bucket"
+}
+
+moved {
+  from = "aws_s3_bucket.old_example"
+  to   = "aws_s3_bucket.example"
+}
+
+removed "aws_s3_bucket" "example" {
+  from = "aws_s3_bucket.example"
+}
 
 resource "aws_subnet" "mtc_public_subnet" {
   vpc_id                  = aws_vpc.mtc_vpc.id
