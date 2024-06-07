@@ -7,14 +7,14 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "my-example-bucket"
-  acl    = "private"
+resource "aws_route" "default_route2" {
+  route_table_id         = aws_route_table.mtc_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.mtc_internet_gateway.id
 }
-
 moved {
-  from = "aws_s3_bucket.old_example"
-  to   = "aws_s3_bucket.example"
+  from = aws_route.default_route3
+  to   = aws_s3_bucket.default_route2
 }
 
 resource "aws_subnet" "mtc_public_subnet" {
