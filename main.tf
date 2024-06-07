@@ -14,7 +14,7 @@ resource "aws_route" "default_route2" {
 }
 moved {
   from = aws_route.default_route3
-  to   = aws_s3_bucket.default_route2
+  to   = aws_route.default_route2
 }
 
 resource "aws_subnet" "mtc_public_subnet" {
