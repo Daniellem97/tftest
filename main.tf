@@ -22,7 +22,7 @@ resource "aws_subnet" "mtc_public_subnet" {
   cidr_block              = "10.123.1.0/24"
   map_public_ip_on_launch = true
   tags = {
-    Name = "dev-public"
+    Name = var.spacelift_repository
   }
 }
 
@@ -73,6 +73,9 @@ resource "aws_security_group" "mtc_sg" {
   key_name   = "mtckey2"
   public_key = file("mtckey.pub")
 }
+
+variable "spacelift_repository"{
+} 
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
