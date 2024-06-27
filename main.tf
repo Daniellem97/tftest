@@ -22,7 +22,7 @@ resource "aws_subnet" "mtc_public_subnet" {
   cidr_block              = "10.123.1.0/24"
   map_public_ip_on_launch = true
   tags = {
-    Repository = var.spacelift_repository
+    Repository = "new"
   }
 }
 
