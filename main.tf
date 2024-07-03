@@ -76,6 +76,22 @@ resource "aws_security_group" "mtc_sg" {
 
 variable "spacelift_repository"{
 } 
+data "terraform_remote_state" "addfsd" {
+  backend = "remote"
+
+  config = {
+    hostname     = "spacelift-io"
+    organization = "daniellem97"
+
+    workspaces = {
+      name = "addfsd"
+    }
+  }
+}
+
+output "random_string" {
+  value = data.terraform_remote_state.addfsd.outputs
+}
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
