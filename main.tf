@@ -7,6 +7,15 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_vpc" "mtc_vpc12345" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
   destination_cidr_block = "0.0.0.0/0"
