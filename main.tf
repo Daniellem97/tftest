@@ -5,6 +5,14 @@ resource "aws_vpc" "mtc_vpc" {
   tags = {
     Name = "dev21"
   }
+  lifecycle {
+    prevent_destroy = false
+  }
+}
+
+import {
+  to = aws_vpc.mtc_vpc
+  id = "vpc-12345678"
 }
 
 resource "aws_route" "default_route2" {
@@ -12,6 +20,7 @@ resource "aws_route" "default_route2" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.mtc_internet_gateway.id
 }
+
 moved {
   from = aws_route.default_route3
   to   = aws_route.default_route2
@@ -33,13 +42,13 @@ resource "aws_internet_gateway" "mtc_internet_gateway" {
   }
 }
 
-
 resource "aws_route_table" "mtc_public_rt" {
   vpc_id = aws_vpc.mtc_vpc.id
   tags = {
     Name = "dev_public_rt"
   }
 }
+
 resource "aws_route" "default_route" {
   route_table_id         = aws_route_table.mtc_public_rt.id
   destination_cidr_block = "0.0.0.0/0"
@@ -68,15 +77,3 @@ resource "aws_security_group" "mtc_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-variable "spacelift_repository"{
-} 
-
-
-  #  command = templatefile("${var.host_os}-ssh-config.tpl", {
-  #    hostname = self.public_ip,
-  #    user     = "ubuntu",
-  #  identityfile = "~/.ssh/mtckey" })
-  #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
-  #}
-
