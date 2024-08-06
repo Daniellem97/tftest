@@ -3,10 +3,6 @@ output "dev_ip2" {
     sensitive = true
 }
 
-resource "random_string" "example" {
+resource "random_string" "example5" {
   length  = 8
-}
-
-output "trigger" {
-  value     = random_string.example.result
 }
