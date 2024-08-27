@@ -7,6 +7,76 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_vpc" "mtc_vpc7" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc6" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc5" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc4" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc3" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc2" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
+resource "aws_vpc" "mtc_vpc1" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev21"
+  }
+}
+
+
 
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
