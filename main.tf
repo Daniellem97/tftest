@@ -80,10 +80,6 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
-provider "aws" {
-  region = "us-west-2"
-}
-
 resource "aws_instance" "example" {
   ami           = "ami-0c94855ba95c71c99" # Amazon Linux 2 AMI ID in us-west-2
   instance_type = "t2.micro"
