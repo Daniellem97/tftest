@@ -80,6 +80,35 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c94855ba95c71c99" # Amazon Linux 2 AMI ID in us-west-2
+  instance_type = "t2.micro"
+
+  # Provisioner block to execute a command remotely on the EC2 instance
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum update -y",
+      "sudo yum install -y httpd",
+      "sudo systemctl start httpd",
+      "sudo systemctl enable httpd"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = file("~/.ssh/my-key.pem")
+      host        = self.public_ip
+    }
+  }
+  
+  tags = {
+    Name = "Terraform Example Instance"
+  }
+}
 
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
