@@ -86,7 +86,7 @@ resource "aws_s3_bucket" "testing_bucket1" {
 
 import {
   id = "testimportdanielle1"
-  to = aws_s3_bucket.testing_bucket
+  to = aws_s3_bucket.testing_bucket1
 }
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
