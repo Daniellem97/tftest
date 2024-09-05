@@ -81,11 +81,11 @@ variable "spacelift_repository"{
 } 
 
 resource "aws_s3_bucket" "testing_bucket" {
-  bucket = "testimportdanielle"  # The name of your S3 bucket
+  bucket = "testimportdanielle1"  # The name of your S3 bucket
 }
 
 import {
-  id = "testimportdanielle"
+  id = "testimportdanielle1"
   to = aws_s3_bucket.testing_bucket
 }
 
