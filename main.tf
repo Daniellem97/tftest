@@ -80,7 +80,7 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
-resource "aws_s3_bucket" "testing_bucket" {
+resource "aws_s3_bucket" "testing_bucket1" {
   bucket = "testimportdanielle1"  # The name of your S3 bucket
 }
 
