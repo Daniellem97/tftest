@@ -80,6 +80,15 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
+resource "aws_s3_bucket" "testing_bucket" {
+  bucket = "testimportdanielle"  # The name of your S3 bucket
+}
+
+import {
+  id = "testimportdanielle"
+  to = aws_s3_bucket.testing_bucket
+}
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
