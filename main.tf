@@ -83,7 +83,7 @@ variable "spacelift_repository"{
 resource "random_pet" "pet1" {
    length = 5
   lifecycle {
-    ignore_changes = [byte_length]
+    ignore_changes = length
   }
  }
 
