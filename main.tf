@@ -80,8 +80,8 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
-resource "random_pet" "pet1" {
-   length = 6
+resource "random_pet" "pet2" {
+   length = 5
  }
 
 
