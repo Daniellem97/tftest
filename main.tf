@@ -81,7 +81,7 @@ variable "spacelift_repository"{
 } 
 
 resource "random_pet" "pet1" {
-   length = 5
+   length = 6
  }
 
 
