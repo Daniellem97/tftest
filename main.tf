@@ -80,8 +80,11 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
-resource "random_pet" "pet2" {
+resource "random_pet" "pet1" {
    length = 5
+  lifecycle {
+    ignore_changes = [byte_length]
+  }
  }
 
 
