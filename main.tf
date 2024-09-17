@@ -95,6 +95,15 @@ output "projects" {
   }
 }
 
+variable "project_description" {
+  default = "Project ID: ${data.terraform_remote_state.debugtest.outputs.projects.name1_test2.id}, Full ID: ${data.terraform_remote_state.debugtest.outputs.projects.name1_test2.id_full}"
+}
+
+output "description_output" {
+  value = var.project_description
+}
+
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
