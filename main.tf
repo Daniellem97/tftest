@@ -80,6 +80,21 @@ resource "aws_security_group" "mtc_sg" {
 variable "spacelift_repository"{
 } 
 
+output "projects" {
+  value = {
+    name1_test3 = {
+      id      = "nam"
+      id_full = "full_id"
+      number  = "12345"
+    },
+    name1_test2 = {
+      id      = "nam"
+      id_full = "full_id"
+      number  = "67890"
+    }
+  }
+}
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
