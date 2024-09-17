@@ -82,13 +82,13 @@ variable "spacelift_repository"{
 
 output "projects" {
   value = {
-    name1_test3 = {
-      id      = "nam"
+    test1 = {
+      id      = "test1name"
       id_full = "full_id"
       number  = "12345"
     },
-    name1_test2 = {
-      id      = "nam"
+    test2 = {
+      id      = "test2name"
       id_full = "full_id"
       number  = "67890"
     }
