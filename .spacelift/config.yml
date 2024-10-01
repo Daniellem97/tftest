@@ -3,4 +3,4 @@ version: "1"
 stacks:
     newtestk8:
         project_root: 
-        runner_image: public.ecr.aws/spacelift/runner-terraform:v1.7.0_20240708
+        runner_image: public.ecr.aws/spacelift/runner-terraform:azure-latest
