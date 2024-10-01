@@ -1,6 +1,6 @@
 version: "1"
   
 stacks:
-    tftest-*:
+    newtestk8:
         project_root: 
         runner_image: fail2
