@@ -16,6 +16,10 @@ resource "aws_vpc" "mtc_vpc6" {
   }
 }
 
+removed {
+  from = aws_vpc.mtc_vpc6
+  }
+
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
   destination_cidr_block = "0.0.0.0/0"
