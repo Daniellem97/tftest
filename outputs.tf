@@ -1,4 +1,4 @@
 output "dev_ip1" {
-    value     = "test"
+    value     = "test1"
     sensitive = false
 }
