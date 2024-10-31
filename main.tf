@@ -15,6 +15,50 @@ resource "aws_vpc" "mtc_vpc6" {
     Name = "dev213"
   }
 }
+
+resource "aws_vpc" "mtc_vpc1316" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev213"
+  }
+}
+
+resource "aws_vpc" "mtc_vpc631" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev213"
+  }
+}
+
+resource "aws_vpc" "mtc_vpc126" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev213"
+  }
+}
+
+resource "aws_vpc" "mtc_vpc11" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev213"
+  }
+}
+resource "aws_vpc" "mtc_vpc6" {
+  cidr_block           = "10.123.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+  tags = {
+    Name = "dev213"
+  }
+}
 resource "aws_vpc" "mtc_vpc1" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
