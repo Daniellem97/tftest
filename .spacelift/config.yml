@@ -1,6 +1,6 @@
 version: "1"
-  
+
 stacks:
-    newtestk8:
-        project_root: 
-        runner_image: public.ecr.aws/spacelift/runner-terraform:latest
+    before_init:
+        - echo "Configuring git..."
+        - echo "Stack inits completed."
