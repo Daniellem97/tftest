@@ -7,6 +7,64 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_codebuild_project" "example" {
+  name          = "example-codebuild-project"
+  description   = "Example AWS CodeBuild Project"
+  build_timeout = 10 # in minutes
+  service_role  = aws_iam_role.codebuild_role.arn
+
+  source {
+    type            = "GITHUB"
+    location        = "https://github.com/your-repo/example.git" # Replace with your repository URL
+    git_clone_depth = 1
+  }
+
+  artifacts {
+    type = "S3"
+    location = aws_s3_bucket.codebuild_artifacts.bucket
+    packaging = "ZIP"
+    path      = "codebuild-output"
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/standard:6.0" # Replace with the latest image
+    type                        = "LINUX_CONTAINER"
+    privileged_mode             = false
+  }
+
+  build_spec = <<EOF
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running pre-build steps..."
+      - npm run lint
+  build:
+    commands:
+      - echo "Building the project..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Running post-build steps..."
+      - npm run test
+      - echo "Build complete!"
+
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: yes
+EOF
+}
+
+
 resource "aws_vpc" "mtc_vpc6" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
