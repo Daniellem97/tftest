@@ -229,11 +229,11 @@ phases:
   pre_build:
     commands:
       - echo "Running pre-build steps..."
+      - echo "Running pre-build steps..."
       - npm run lint
   build:
     commands:
       - echo "Building the project..."
-      - npm run build
   post_build:
     commands:
       - echo "Running post-build steps..."
