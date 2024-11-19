@@ -168,6 +168,109 @@ output "projects" {
   }
 }
 
+provider "aws" {
+  region = "us-east-1" # Change to your preferred region
+}
+
+resource "aws_s3_bucket" "codebuild_artifacts" {
+  bucket = "codebuild-artifacts-bucket-unique-name" # Replace with a unique bucket name
+  acl    = "private"
+}
+
+resource "aws_iam_role" "codebuild_role" {
+  name = "codebuild-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = "codebuild.amazonaws.com"
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "codebuild_policy" {
+  role = aws_iam_role.codebuild_role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = ["s3:*"],
+        Resource = [
+          aws_s3_bucket.codebuild_artifacts.arn,
+          "${aws_s3_bucket.codebuild_artifacts.arn}/*"
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_codebuild_project" "example" {
+  name          = "example-codebuild-project"
+  description   = "Example AWS CodeBuild Project"
+  build_timeout = 10 # in minutes
+  service_role  = aws_iam_role.codebuild_role.arn
+
+  source {
+    type     = "GITHUB"
+    location = "https://github.com/your-repo/example.git" # Replace with your repository URL
+  }
+
+  artifacts {
+    type      = "S3"
+    location  = aws_s3_bucket.codebuild_artifacts.bucket
+    packaging = "ZIP"
+    path      = "codebuild-output"
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/standard:6.0" # Replace with the latest image
+    type                        = "LINUX_CONTAINER"
+    privileged_mode             = false
+  }
+
+  source_version = "main"
+
+  buildspec = <<EOF
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running pre-build steps..."
+      - npm run lint
+  build:
+    commands:
+      - echo "Building the project..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Running post-build steps..."
+      - npm run test
+      - echo "Build complete!"
+
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: yes
+EOF
+}
+
+
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
