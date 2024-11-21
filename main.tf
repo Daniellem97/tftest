@@ -168,6 +168,28 @@ output "projects" {
   }
 }
 
+resource "aws_cloudfront_function" "example" {
+  name    = "example-request-handler" # Contains "request"
+  runtime = "cloudfront-js-1.0"       # Current CloudFront function runtime
+
+  code = <<-EOT
+    function handler(event) {
+        var request = event.request;
+        var headers = request.headers;
+
+        // Add your logic here, including checking or manipulating `headers['true-client-ip']`
+        if (headers['true-client-ip']) {
+            console.log("True-Client-IP: " + headers['true-client-ip'].value);
+        } else {
+            console.log("True-Client-IP header is not present.");
+        }
+
+        return request;
+    }
+  EOT
+
+  comment = "CloudFront function handling request logic."
+}
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
   #    user     = "ubuntu",
