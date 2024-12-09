@@ -1,3 +1,8 @@
+module "moduletest" {
+  source  = "spacelift.io/daniellem97/moduletest/default"
+  version = "0.3.0"
+}
+
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
