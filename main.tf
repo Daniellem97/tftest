@@ -1,6 +1,9 @@
-module "moduletest" {
-  source  = "spacelift.io/daniellem97/moduletest/default"
-  version = "0.3.0"
+module "terraform-default-multimodule" {
+  source  = "spacelift.io/daniellem97/terraform-default-multimodule/default"
+  version = "0.3.10"
+
+  # Optional inputs 
+  # version_number = string
 }
 
 resource "aws_vpc" "mtc_vpc" {
