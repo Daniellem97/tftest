@@ -1,8 +1,8 @@
-version: "2"
+version: "1"
 
-stack_defaults:
-    # Note that tflint is not installed by
-    # default - this example assumes that your
-    # runner image has this available.
+stacks:
+    # The key of is the immutable slug of your stack
+    # which you will find in the URL.
+   debugtest:
     before_init:
         - echo "from config.yml"
