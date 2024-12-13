@@ -15,6 +15,7 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+
 resource "aws_vpc" "mtc_vpc6" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
