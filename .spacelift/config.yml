@@ -6,5 +6,6 @@ stacks:
    debugtest:
     before_init:
         - echo "from config.yml"
+    break:
     before_plan:
         - echo "config.yml"
