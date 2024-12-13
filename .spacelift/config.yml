@@ -1,10 +1,5 @@
 version: "1"
 
 stacks:
-    # The key of is the immutable slug of your stack
-    # which you will find in the URL.
-   debugtest:
     before_init:
-        - echo "from config.yml"
-    before_plan:
-        - echo "config.yml"
+        - set -x
