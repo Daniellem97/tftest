@@ -6,3 +6,7 @@ output "dev_ip3" {
     value     = "test1"
     sensitive = false
 }
+output "dev_i3" {
+    value     = "test1"
+    sensitive = false
+}
