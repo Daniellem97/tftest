@@ -7,6 +7,7 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+
 resource "aws_s3_bucket" "example" {
   bucket = "newbucketnameletsseehowthisonegoes"
 
