@@ -8,7 +8,7 @@ resource "aws_vpc" "mtc_vpc" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "asfdgfds234"
+  bucket = "bitbuckets3bsl"
 
   tags = {
     Name        = "My bucket"
