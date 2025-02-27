@@ -3,6 +3,6 @@ output "dev_ip1" {
     sensitive = false
 }
 output "dev_ip4" {
-    value     = "testt13"
+    value     = "testt1h3"
     sensitive = false
 }
