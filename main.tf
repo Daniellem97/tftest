@@ -7,6 +7,7 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+
 resource "aws_s3_bucket" "testing_bucket" {
   bucket = "asfdgfds234"  # The name of your S3 bucket
 }
