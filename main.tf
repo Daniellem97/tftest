@@ -8,13 +8,9 @@ resource "aws_vpc" "mtc_vpc" {
 }
 
 resource "aws_s3_bucket" "testing_bucket" {
-  bucket = "newbucketnameletsseehowthisonegoes"  # The name of your S3 bucket
+  bucket = "newgfjvgu79riys"  # The name of your S3 bucket
 }
 
-import {
-  id = "newbucketnameletsseehowthisonegoes"
-  to = aws_s3_bucket.testing_bucket
-}
 
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
