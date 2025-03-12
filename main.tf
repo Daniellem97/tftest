@@ -8,11 +8,11 @@ resource "aws_vpc" "mtc_vpc" {
 }
 
 resource "aws_s3_bucket" "testing_bucket" {
-  bucket = "bitbuckets3bsl"  # The name of your S3 bucket
+  bucket = "newbucketnameletsseehowthisonegoes"  # The name of your S3 bucket
 }
 
 import {
-  id = "bitbuckets3bsl"
+  id = "newbucketnameletsseehowthisonegoes"
   to = aws_s3_bucket.testing_bucket
 }
 
