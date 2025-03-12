@@ -7,6 +7,15 @@ resource "aws_vpc" "mtc_vpc" {
   }
 }
 
+resource "aws_s3_bucket" "testing_bucket" {
+  bucket = "danielletestingspaceliftlogsscript"  # The name of your S3 bucket
+}
+
+import {
+  id = "danielletestingspaceliftlogsscript"
+  to = aws_s3_bucket.testing_bucket
+}
+
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
   destination_cidr_block = "0.0.0.0/0"
