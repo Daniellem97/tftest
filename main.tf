@@ -94,3 +94,4 @@ output "projects" {
   #  interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   #}
 
+
