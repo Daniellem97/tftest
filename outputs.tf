@@ -1,4 +1,4 @@
-output "dev_ip1" {
+output "dev_ip3" {
     value     = "test132"
     sensitive = false
 }
