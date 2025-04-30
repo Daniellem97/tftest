@@ -3,7 +3,7 @@ resource "aws_vpc" "mtc_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name = "dev23"
+    Name = "dev233"
   }
 }
 
