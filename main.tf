@@ -1,10 +1,3 @@
-module "moduletest" {
-  source  = "us.spacelift.io/daniellem97/moduletest/default"
-  version = "0.3.10"
-
-  # Optional inputs
-  # version_number = string
-}
 
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
