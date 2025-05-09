@@ -7,5 +7,6 @@ terraform {
   }
 }
 
+
 provider "aws" {
 }
