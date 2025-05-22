@@ -1,4 +1,3 @@
-
 resource "aws_vpc" "mtc_vpc" {
   cidr_block           = "10.123.0.0/16"
   enable_dns_hostnames = true
@@ -7,7 +6,6 @@ resource "aws_vpc" "mtc_vpc" {
     Name = "dev23"
   }
 }
-
 
 resource "aws_route" "default_route2" {
   route_table_id         = aws_route_table.mtc_public_rt.id
@@ -88,6 +86,7 @@ output "projects" {
     }
   }
 }
+
 
   #  command = templatefile("${var.host_os}-ssh-config.tpl", {
   #    hostname = self.public_ip,
